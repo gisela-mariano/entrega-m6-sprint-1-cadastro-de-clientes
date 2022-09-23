@@ -16,3 +16,12 @@ export interface IUserRequestWithoutPassword{
   email: string,
   password?: string
 }
+
+export interface IUserLoginRequest{
+  email: string
+  password: string,
+}
+
+export interface IUserToken{
+  token: string
+}

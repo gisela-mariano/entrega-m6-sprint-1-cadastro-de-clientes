@@ -26,10 +26,6 @@ const userCreateService = async ({
   const dataReturn: IUserRequestWithoutPassword = { ...newUser };
   delete dataReturn.password;
 
-  console.log('return', dataReturn);
-  console.log('user', newUser);
-  
-
   return dataReturn;
 };
 
