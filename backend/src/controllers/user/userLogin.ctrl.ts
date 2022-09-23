@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import AppError from '../errors/AppError';
-import { IUserLoginRequest } from '../interfaces/user.interface';
-import userLoginService from '../services/userLogin.service';
+import AppError from '../../errors/AppError';
+import { IUserLoginRequest } from '../../interfaces/user.interface';
+import userLoginService from '../../services/user/userLogin.srvc';
 
 const userLoginController = async (req: Request, res: Response) => {
   const { email, password }: IUserLoginRequest = req.body;

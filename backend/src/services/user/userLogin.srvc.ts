@@ -1,6 +1,6 @@
-import AppError from '../errors/AppError';
-import { IUserLoginRequest, IUserToken } from '../interfaces/user.interface';
-import { userRepository } from '../repositories/user.repository';
+import AppError from '../../errors/AppError';
+import { IUserLoginRequest, IUserToken } from '../../interfaces/user.interface';
+import { userRepository } from '../../repositories/user.repository';
 import { compareSync } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -10,7 +10,7 @@ const userLoginService = async ({
 }: IUserLoginRequest): Promise<String> => {
   const user = await userRepository.findOne({
     where: {
-      email: email,
+      email,
     },
   });
 

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import userListAllService from '../services/userListAll.service';
+import userListAllService from '../../services/user/userListAll.srvc';
 
 const userListAllController = async (req: Request, res: Response) => {
   try {

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { IUserRequest } from '../interfaces/user.interface';
-import userCreateService from '../services/userCreate.service';
+import { IUserRequest } from '../../interfaces/user.interface';
+import userCreateService from '../../services/user/userCreate.srvc';
 
 const userCreateController = async (req: Request, res: Response) => {
   const { name, email, password }: IUserRequest = req.body;

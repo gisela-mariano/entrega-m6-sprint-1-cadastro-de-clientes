@@ -2,11 +2,11 @@ import {
   IUserRequest,
   IUserRequestWithoutPassword,
   IUserResponse,
-} from '../interfaces/user.interface';
+} from '../../interfaces/user.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { hash } from 'bcryptjs';
-import { userRepository } from '../repositories/user.repository';
-import { User } from '../entities/user.entity';
+import { userRepository } from '../../repositories/user.repository';
+import { User } from '../../entities/user.entity';
 
 const userCreateService = async ({
   name,
