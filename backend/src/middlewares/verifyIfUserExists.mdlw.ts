@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { userRepository } from '../repositories/user.repository';
+import { userRepository } from '../repositories';
 
 const verifyIfUserExistsMiddleware = async (
   req: Request,
@@ -15,7 +15,7 @@ const verifyIfUserExistsMiddleware = async (
   });
 
   if (!user)
-    res.status(404).json({ error: 'Error', message: 'User not found.' });
+    return res.status(404).json({ error: 'Error', message: 'User not found.' });
 
   next();
 };

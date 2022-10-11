@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { userRepository } from '../repositories/user.repository';
+import { userRepository } from '../repositories';
 
 const verifyIfEmailAlreadExistsMiddleware = async (
   req: Request,
@@ -15,7 +15,7 @@ const verifyIfEmailAlreadExistsMiddleware = async (
   });
 
   if (user)
-    res
+    return res
       .status(400)
       .json({ error: 'Error', message: 'Email already registred' });
 

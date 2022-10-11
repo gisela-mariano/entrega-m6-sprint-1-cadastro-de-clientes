@@ -22,6 +22,10 @@ export interface IUserLoginRequest{
   password: string,
 }
 
-export interface IUserToken{
-  token: string
+export interface IToken {
+  name: string,
+  email: string,
+  id_user: string,
+  iat: number,
+  exp: number
 }

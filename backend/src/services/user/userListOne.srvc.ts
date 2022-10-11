@@ -1,5 +1,5 @@
 import { IUserResponse } from '../../interfaces/user.interface';
-import { userRepository } from '../../repositories/user.repository';
+import { userRepository } from '../../repositories';
 
 const userListOneService = async (id_user: string): Promise<IUserResponse> => {
   const user = await userRepository

@@ -1,6 +1,6 @@
 import AppError from '../../errors/AppError';
-import { IUserLoginRequest, IUserToken } from '../../interfaces/user.interface';
-import { userRepository } from '../../repositories/user.repository';
+import { IUserLoginRequest } from '../../interfaces/user.interface';
+import { userRepository } from '../../repositories';
 import { compareSync } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 

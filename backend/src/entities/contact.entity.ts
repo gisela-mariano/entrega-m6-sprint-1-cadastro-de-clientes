@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, PrimaryColumn, OneToMany } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 import { Email } from './email.entity';
 import { Phone } from './phone.entity';
@@ -8,13 +8,19 @@ export class Contact {
   @PrimaryColumn('uuid')
   readonly id: string;
 
-  @ManyToMany(() => Phone, { eager: true })
-  @JoinTable()
-  phones: Phone[];
+  // @ManyToMany(() => Phone, { eager: true })
+  // @JoinTable()
+  // phones: Phone[];
 
-  @ManyToMany(() => Email, { eager: true })
-  @JoinTable()
+  // @ManyToMany(() => Email, { eager: true })
+  // @JoinTable()
+  // emails: Email[];
+
+  @OneToMany(() => Email, (email) => email.contact, { eager: true })
   emails: Email[];
+
+  @OneToMany(() => Phone, (phone) => phone.contact, { eager: true })
+  phones: Phone[];
 
   constructor() {
     if (!this.id) {
