@@ -9,19 +9,10 @@ const clientListAllService = async (token: string) => {
 
   const clients = await clientRepository.createQueryBuilder('client')
   .innerJoin('client.user', 'user', 'client.userId = user.id')
-  .innerJoin('client.contact', 'contact', 'client.contactId = contact.id')
-  .innerJoin('contact.emails', 'emails')
-  .innerJoin('contact.phones', 'phones')
-  .select(['client.id', 'client.name', 'contact', 'emails', 'phones'])
+  .leftJoinAndSelect('client.emails', 'email')
+  .leftJoinAndSelect('client.phones', 'phone')
   .where("user.id = :id", {id: decodedToken.id_user})
   .getMany()
-
-  // const clients = await clientRepository.createQueryBuilder('client')
-  // .leftJoinAndSelect('client.contact', 'contact')
-  // .select(['client.id', 'client.name', 'client.createdAt', 'contact'])
-  // .getMany()
-
-  console.log(clients);
 
   return clients
 };

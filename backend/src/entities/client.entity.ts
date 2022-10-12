@@ -8,7 +8,8 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
-import { Contact } from './contact.entity';
+import { Email } from './email.entity';
+import { Phone } from './phone.entity';
 import { User } from './user.entity';
 
 @Entity()
@@ -22,18 +23,14 @@ export class Client {
   @Column({ type: 'varchar', length: 255 })
   createdAt: string;
 
-  @OneToOne(() => Contact, {
-    eager: true,
-  })
-  @JoinColumn()
-  contact: Contact;
-
-  // @ManyToMany(() => User, {eager: true})
-  // @JoinTable()
-  // users: User
-
   @ManyToOne(() => User, (user) => user.clients)
   user: User;
+
+  @OneToMany(() => Email, (email) => email.client, { eager: true, onDelete: 'CASCADE' })
+  emails: Email[];
+
+  @OneToMany(() => Phone, (phone) => phone.client, { eager: true, onDelete: 'CASCADE' })
+  phones: Phone[];
 
   constructor() {
     if (!this.id) {

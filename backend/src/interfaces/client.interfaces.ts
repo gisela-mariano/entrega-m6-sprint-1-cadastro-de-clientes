@@ -1,13 +1,26 @@
-import { Email } from "../entities/email.entity"
-import { Phone } from "../entities/phone.entity"
+import { Email } from '../entities/email.entity';
+import { Phone } from '../entities/phone.entity';
 
-export interface IContact{
-  email?: string
-  phone?: string
+export interface IPhone {
+  phone: string;
 }
 
-export interface IClientRequest{
-  fullName: string
-  contacts?: IContact
-  token?: string
+export interface IEmail {
+  phone: string;
+}
+
+export interface IContact {
+  emails?: string[];
+  phones?: string[];
+}
+
+export interface IClientRequest {
+  name: string;
+  contacts?: IContact;
+  token?: string;
+}
+
+export interface IClientUpdateRequest {
+  idClient: string;
+  name: string;
 }

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import { userRepository } from '../repositories';
+import { userRepository } from '../../repositories';
 
-const verifyIfEmailAlreadExistsMiddleware = async (
+const verifyIfUserEmailExistsMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -22,4 +22,4 @@ const verifyIfEmailAlreadExistsMiddleware = async (
   next();
 };
 
-export default verifyIfEmailAlreadExistsMiddleware;
+export default verifyIfUserEmailExistsMiddleware;

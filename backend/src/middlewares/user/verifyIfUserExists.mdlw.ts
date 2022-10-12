@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { userRepository } from '../repositories';
+import { userRepository } from '../../repositories';
 
 const verifyIfUserExistsMiddleware = async (
   req: Request,
