@@ -7,6 +7,9 @@ import verifyIfClientExistsMiddleware from '../middlewares/client/verifyIfClient
 import clientDeleteController from '../controllers/client/clientDelete.ctrl';
 import vreifiIfIsUserClientMiddleware from '../middlewares/client/verifyIfIsUserClient.mdlw';
 import vreifiIfIsUserClientNameAlreadyRegistredMiddleware from '../middlewares/client/verifyIfUserClientNameAlreadyRegistred.mdlw';
+import verifyIfIsRegisteringSameEmailOrPhoneMiddleware from '../middlewares/client/verifyIfIsRegisteringSameEmailOrPhone.mdlw';
+import verifyLengthOfEmailAndPhoneFieldMiddleware from '../middlewares/client/varifyLengthOfEmailAndPhoneFields.mdlw';
+import clientListOneController from '../controllers/client/clientListOne.ctrl';
 
 const clientRouter = Router();
 
@@ -17,6 +20,13 @@ clientRouter.post(
   ClientCreateController
 );
 clientRouter.get('', verifyAuthTokenMiddleware, clientListAllController);
+clientRouter.get(
+  '/:id_client',
+  verifyAuthTokenMiddleware,
+  verifyIfClientExistsMiddleware,
+  vreifiIfIsUserClientMiddleware,
+  clientListOneController
+);
 clientRouter.put(
   '/:id_client',
   verifyAuthTokenMiddleware,

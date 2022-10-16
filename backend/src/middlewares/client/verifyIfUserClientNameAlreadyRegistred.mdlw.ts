@@ -20,7 +20,7 @@ const vreifiIfIsUserClientNameAlreadyRegistredMiddleware = async (
     .andWhere('client.userId = :id_user', { id_user: decodedToken.id_user })
     .getOne();
 
-  if (!client)
+  if (client)
     return res.status(400).json({
       error: 'Error',
       message: 'There is already a client registered with this name.',
